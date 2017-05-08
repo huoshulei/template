@@ -1,0 +1,16 @@
+<application>
+  <component name="TemplateSettings">
+    <option name="deletedKeys">
+      <list>
+        <TemplateKey>
+          <option name="groupName" value="Android" />
+          <option name="key" value="Toast" />
+        </TemplateKey>
+        <TemplateKey>
+          <option name="groupName" value="AndroidComments" />
+          <option name="key" value="todo" />
+        </TemplateKey>
+      </list>
+    </option>
+  </component>
+</application>

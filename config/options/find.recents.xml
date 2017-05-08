@@ -1,0 +1,45 @@
+<application>
+  <component name="FindRecents">
+    <findStrings>
+      <find>mOpenAnimationEnable</find>
+      <find>addAnimation</find>
+      <find>MutableList</find>
+      <find>最后</find>
+      <find>List</find>
+      <find>isAskToo</find>
+      <find>settext</find>
+      <find>canScrollVertically</find>
+      <find>mTitleBarLeftTxt</find>
+      <find>mDivider</find>
+      <find>resource</find>
+      <find>refreshArrow</find>
+      <find>mOnTouchListener</find>
+      <find>autoCompleteTextView</find>
+      <find>inputType</find>
+      <find>maxlength</find>
+      <find>setFilters</find>
+      <find>latest</find>
+      <find>list/anonymous</find>
+      <find>checkForgetPassVerifyCode</find>
+      <find>绑定</find>
+      <find>0x1020</find>
+      <find>REQUEST_CODE_SOURCE</find>
+      <find>tv_personal_tailor</find>
+      <find>mTvPersonalTailor</find>
+      <find>tv_submit</find>
+      <find>tv_miji</find>
+      <find>book/list</find>
+      <find>setEnableRefresh</find>
+      <find>MobclickAgent</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>topMarginDip</replace>
+      <replace>L</replace>
+      <replace>,</replace>
+      <replace>L.d(</replace>
+      <replace>obj</replace>
+      <replace>Single</replace>
+      <replace>MutableList</replace>
+    </replaceStrings>
+  </component>
+</application>

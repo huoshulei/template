@@ -1,0 +1,28 @@
+<application>
+  <component name="UsageTrigger">
+    <counts>
+      <entry feature="CreateFile.CreateFileAction" count="2" />
+      <entry feature="execute.AndroidRunConfigurationType.Debug" count="18" />
+      <entry feature="execute.AndroidRunConfigurationType.Run" count="1846" />
+      <entry feature="execute.GradleRunConfiguration.Run" count="3" />
+      <entry feature="ide.settings.Android_Logcat" count="1" />
+      <entry feature="ide.settings.Android_SDK" count="1" />
+      <entry feature="ide.settings.Appearance" count="2" />
+      <entry feature="ide.settings.Colors_&amp;_Fonts" count="1" />
+      <entry feature="ide.settings.Edit_File_Template" count="1" />
+      <entry feature="ide.settings.Font" count="1" />
+      <entry feature="ide.settings.GitHub" count="1" />
+      <entry feature="ide.settings.Keymap" count="3" />
+      <entry feature="ide.settings.Kotlin_Compiler" count="1" />
+      <entry feature="ide.settings.Live_Templates" count="13" />
+      <entry feature="ide.settings.Plugins" count="19" />
+      <entry feature="ide.settings.Project_Structure" count="14" />
+      <entry feature="ide.settings.Subversion" count="1" />
+      <entry feature="ide.settings.Version_Control" count="2" />
+      <entry feature="ideaapp.started" count="100" />
+      <entry feature="terminal.win" count="24" />
+      <entry feature="welcome.screen.WelcomeScreen.Configure" count="1" />
+      <entry feature="welcome.screen.WelcomeScreen.CreateNewProject" count="1" />
+    </counts>
+  </component>
+</application>
