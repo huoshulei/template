@@ -9,7 +9,9 @@ import org.jetbrains.anko.AnkoContext
  */
 class ${componentClass}(override val isShowToolbar: Boolean = true) : BaseComponent<${activityClass}>() {
     override fun contentView(ui: AnkoContext<${activityClass}>) {
-
+		with(ui) {
+	  
+	   ｝
     }
 
 }
