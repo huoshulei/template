@@ -1,9 +1,10 @@
-package ${packageName}.base
+package ${applicationPackage}.base
 
 import io.reactivex.common.internal.disposables.ListCompositeDisposable
+import org.jetbrains.anko.AnkoComponent
 
 
-abstract class LifeActivity<A : LifeActivity<A, T, P>, out T : BaseComponent<A>, out P : BasePresenter>
+abstract class LifeActivity<A : LifeActivity<A, T, P>, out T : AnkoComponent<A>, out P : BasePresenter>
     : BaseActivity<A, T>(), OnProgress {
     protected abstract val presenter: P
     override val disposables by lazy { ListCompositeDisposable() }

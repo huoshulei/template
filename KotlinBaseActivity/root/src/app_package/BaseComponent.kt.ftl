@@ -1,14 +1,16 @@
-package ${packageName}.base
+package ${applicationPackage}.base
 
 import android.graphics.Color
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Gravity
 import android.view.View
 import android.view.ViewManager
 import android.widget.LinearLayout
 import android.widget.TextView
-import ${packageName}.R
-import ${packageName}.widget.SwipeBackLayout
+import com.example.refresh.TwinklingRefreshLayout
+import ${applicationPackage}.R
+import ${applicationPackage}.widget.SwipeBackLayout
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.navigationIconResource
 import org.jetbrains.anko.appcompat.v7.toolbar
@@ -16,18 +18,17 @@ import org.jetbrains.anko.custom.ankoView
 
 /**
  * 创建者： huoshulei
- * 时间：   ${lastUpdated?string.medium_short} <＃ - 中等日期，短时间 - >
+ * 时间：  2017/5/6.
  */
-abstract class BaseComponent<T : AppCompatActivity> : AnkoComponent<T> {
+abstract class BaseComponent<in T : AppCompatActivity> : AnkoComponent<T> {
     abstract val isShowToolbar: Boolean
-    protected var title: TextView? = null
-    protected var toolbar: Toolbar? = null
+    var titleText: TextView? = null
+    var toolbar: Toolbar? = null
     override fun createView(ui: AnkoContext<T>): View = with(ui) {
         frameLayout {
             val imageView = imageView {
-                lparams(matchParent, matchParent)
                 backgroundResource = R.color.bg_f7
-            }
+            }.lparams(matchParent, matchParent)
             swipeBackLayout {
                 //滑动返回布局
                 lparams(matchParent, matchParent)
@@ -40,29 +41,32 @@ abstract class BaseComponent<T : AppCompatActivity> : AnkoComponent<T> {
                     if (isShowToolbar)//是否显示toolbar
                         toolbar = toolbar {
                             lparams(matchParent, dip(44)) { }
-                            this@BaseComponent.title = textView {
-                                lparams(wrapContent, dip(43)) {
-                                    gravity = Gravity.CENTER
-                                }
+                            titleText = textView {
                                 lines = 1
                                 textColor = Color.BLACK
                                 gravity = Gravity.CENTER
                                 textSize = 18f
+                            }.lparams(wrapContent, dip(43)) {
+                                gravity = Gravity.CENTER
                             }
                             ui.owner.setSupportActionBar(this)
                             ui.owner.supportActionBar?.setDisplayShowTitleEnabled(false)
                             navigationIconResource = R.mipmap.detail_back
                             setNavigationOnClickListener { ui.owner.onBackPressed() }
                         }
-                    contentView(this@with)
+                    contentView(this@with.owner)
                 }
             }
         }
     }
 
-    abstract fun contentView(ui: AnkoContext<T>)
+    abstract fun _LinearLayout.contentView(owner: T)
 
-    inline fun ViewManager.swipeBackLayout(theme: Int = 0, init: SwipeBackLayout.() -> Unit): SwipeBackLayout {
-        return ankoView({ SwipeBackLayout(it) }, theme) { init() }
-    }
+}
+
+inline fun ViewManager.swipeBackLayout(theme: Int = 0, init: SwipeBackLayout.() -> Unit): SwipeBackLayout {
+    return ankoView({ SwipeBackLayout(it) }, theme) { init() }
+}
+inline fun ViewManager.twinklingRefreshLayout(theme: Int = 0, init: TwinklingRefreshLayout.() -> Unit): TwinklingRefreshLayout {
+    return ankoView({ TwinklingRefreshLayout(it) }, theme) { init() }
 }

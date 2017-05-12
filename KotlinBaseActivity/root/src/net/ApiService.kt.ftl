@@ -1,4 +1,4 @@
-package ${packageName}.net
+package ${applicationPackage}.net
 
 interface ApiService {
 }

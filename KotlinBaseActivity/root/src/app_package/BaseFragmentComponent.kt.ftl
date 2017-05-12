@@ -1,14 +1,19 @@
-package ${packageName}.base
+package ${applicationPackage}.base
 
 import android.app.Fragment
+import android.view.View
 import org.jetbrains.anko.*
 
 /**
  * 创建者： huoshulei
- * 时间：   ${lastUpdated?string.medium_short} <＃ - 中等日期，短时间 - >
+ * 时间：  2017/5/6.
  */
-abstract class BaseFragmentComponent {
+interface BaseFragmentComponent {
+    fun createView(fragment: Fragment) = fragment.UI {
+        createView(this)
+    }
 
-    abstract fun createView(ui: AnkoContext<Fragment>)
+    fun createView(ui: AnkoContext<Fragment>): View
 
 }
+

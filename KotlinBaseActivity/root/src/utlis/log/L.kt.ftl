@@ -1,4 +1,4 @@
-package ${packageName}.utlis.log
+package ${applicationPackage}.utlis.log
 package com.spark.words.utlis.log
 
 import android.text.TextUtils

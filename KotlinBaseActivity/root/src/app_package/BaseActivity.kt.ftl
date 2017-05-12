@@ -1,4 +1,4 @@
-package ${packageName}.base
+package ${applicationPackage}.base
 
 
 import android.app.Dialog
@@ -13,13 +13,12 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import com.growingio.android.sdk.collection.GrowingIO
-import ${packageName}.R
-import org.jetbrains.anko.ctx
-import org.jetbrains.anko.setContentView
-import org.jetbrains.anko.toast
+import ${applicationPackage}.R
+import org.jetbrains.anko.*
 
 
-abstract class BaseActivity<A : BaseActivity<A, T>, out T : BaseComponent<A>> : AppCompatActivity() {
+
+abstract class BaseActivity<A : BaseActivity<A, T>, out T : AnkoComponent<A>> : AppCompatActivity() {
     abstract val component: T
     private val dialog by lazy {
         with(Dialog(this)) {

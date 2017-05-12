@@ -1,4 +1,4 @@
-package ${packageName}.base
+package ${applicationPackage}.base
 
 import android.app.Dialog
 import android.app.Fragment
@@ -12,11 +12,12 @@ import org.jetbrains.anko.*
 
 /**
  * 创建者：
- * 时间：  ${lastUpdated?string.medium_short} <＃ - 中等日期，短时间 - >
+ * 时间：  
  */
-abstract class BaseFragment<out T:BaseFragmentComponent> : Fragment() {
-    private var rootView: View? = null
+abstract class BaseFragment<out T : BaseFragmentComponent> : Fragment() {
     abstract val component: T
+    private val rootView by lazy { component.createView(this).view }
+    private var isFirstInit: Boolean? = true
     private val dialog by lazy {
         with(Dialog(ctx)) {
             setContentView(View(context), ViewGroup.LayoutParams(0, 0))
@@ -26,24 +27,32 @@ abstract class BaseFragment<out T:BaseFragmentComponent> : Fragment() {
         }
     }
     private var isFirstVisible = true
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         GrowingIO.getInstance().setPageName(this, javaClass.simpleName)
-        rootView = UI { component.createView(this) }.view
-        configView(rootView)
-        handleEvent()
-        initData()
+
+
     }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return rootView
     }
 
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (isFirstVisible) {
+            isFirstInit = false
+            configView(rootView)
+            handleEvent()
+            initData()
+        }
+    }
+
     /**
      * 初始化布局组件
      */
-    open fun configView(view: View?) {
+    open fun configView(view: View) {
 
     }
 

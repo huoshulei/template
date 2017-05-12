@@ -3,7 +3,7 @@ package ${packageName};
 import ${applicationPackage}.base.BaseFragmentComponent
 
 import android.app.Fragment
-import org.jetbrains.anko.AnkoContext
+import org.jetbrains.anko.*
 
 
 /**
@@ -11,9 +11,8 @@ import org.jetbrains.anko.AnkoContext
  * 时间：  
  */
 class ${componentClass} : BaseFragmentComponent() {
-    override fun createView(ui: AnkoContext<Fragment>) {
-        with(ui) {
+    override fun createView(ui: AnkoContext<Fragment>): View = with(ui) {
            
-        }
+        
     }
 }

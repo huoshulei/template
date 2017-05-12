@@ -1,4 +1,4 @@
-package ${packageName}.base
+package ${applicationPackage}.base
 
 import io.reactivex.common.Disposable
 import io.reactivex.common.internal.disposables.ListCompositeDisposable

@@ -1,7 +1,7 @@
-package ${packageName}.net
+package ${applicationPackage}.net
 
 
-import ${packageName}.utlis.log.HttpLoggingInterceptor
+import ${applicationPackage}.utlis.log.HttpLoggingInterceptor
 
 
 import okhttp3.OkHttpClient

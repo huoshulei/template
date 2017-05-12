@@ -1,4 +1,4 @@
-package ${packageName}.widget
+package ${applicationPackage}.widget
 
 /*
  * Copyright 2015 Eric Liu

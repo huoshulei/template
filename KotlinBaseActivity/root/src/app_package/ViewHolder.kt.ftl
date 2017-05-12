@@ -1,4 +1,4 @@
-package ${packageName}.base
+package ${applicationPackage}.base
 
 import android.graphics.Bitmap
 import android.graphics.Typeface

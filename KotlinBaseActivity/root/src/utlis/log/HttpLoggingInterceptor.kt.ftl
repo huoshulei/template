@@ -1,4 +1,4 @@
-package ${packageName}.utlis.log
+package ${applicationPackage}.utlis.log
 
 /*
  * Copyright (C) 2015 Square, Inc.

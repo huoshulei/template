@@ -1,10 +1,12 @@
-package ${packageName}.base
+package ${applicationPackage}.base
 
 
 import ${packageName}.utlis.log.L
 import ${packageName}.net.*
 
 import com.google.gson.JsonParseException
+//import com.spark.words.rx.factory.HttpException
+//import com.spark.words.rx.rxandroid.AndroidSchedulers
 
 import org.json.JSONException
 
@@ -18,29 +20,26 @@ import io.reactivex.observable.Single
 
 /**
  * 创建者： huoshulei
- * 时间：   ${lastUpdated?string.medium_short} <＃ - 中等日期，短时间 - >
+ * 时间：  2017/4/19.
  */
 
 abstract class BasePresenter(private val progress: OnProgress) {
-
-	protected val api by lazy { Re.api }
-
+    protected val api by lazy { Re.api }
     private fun <T> Single<T>.map(): Single<T> {
         return map { it }
     }
 
-   fun <T> Single<T>.subscribe(onNext: (T) -> Unit, onError: (Throwable) -> Unit={}) {
+    fun <T> Single<T>.subscribe(onNext: (T) -> Unit, onError: (Throwable) -> Unit = {}) {
         progress.addDisposable(doOnSubscribe { progress.showProgress() }
                 .map()
                 .onErrorResumeNext { handleException(it) }
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError {
-                    onError(it)
-                    progress.onError(it.message ?: "忽略")
-                    progress.dismissProgress()
-                }
-                .subscribe { it ->
-                    onNext(it)
+                .subscribe { d, e ->
+                    d?.let { onNext(d) }
+                    e?.let {
+                        onError(e)
+                        progress.onError(e.message ?: "忽略")
+                    }
                     progress.dismissProgress()
                 })
 
@@ -50,8 +49,10 @@ abstract class BasePresenter(private val progress: OnProgress) {
         L.d("BaseViewModule:" + e.toString())
         val ex: ApiException
         if (e is HttpException) {
+            L.d("handleException: " + e.code())
             when (e.code()) {
                 400 -> ex = ApiException("请求错误!请求中有语法错误")
+                401 -> ex = ApiException("Token过期！请重新登录")
                 402 -> ex = ApiException("需要付费")
                 403 -> ex = ApiException("禁止访问!")
                 404 -> ex = ApiException("访问目标不存在或已被删除")
