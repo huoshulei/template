@@ -4,6 +4,6 @@
     <global id="hasNoActionBar" type="boolean" value="false" />
     <#include "../common/common_globals.xml.ftl" />
     <global id="isLauncher" type="boolean" value="${isNewProject?string}" />
-	<global id="generateActivityTitle" type="boolean" value="false" />
+	<global id="generateActivityTitle" type="boolean" value="true" />
 	 <global id="parentActivityClass" value="" />
 </globals>

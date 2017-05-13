@@ -39,6 +39,14 @@
             suggest="${head}Component"
             default="MainComponent"
             help="The name of the Component to create for the activity"/>
+	<parameter
+            id="activityTitle"
+            name="Title"
+            type="string"
+            constraints="nonempty"
+            default="MainActivity"
+            suggest="${activityClass}"
+            help="The name of the activity. For launcher activities, the application title."/>
 			
     <parameter
             id="packageName"

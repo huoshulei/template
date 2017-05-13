@@ -1,6 +1,7 @@
-package ${packageName};
+package ${packageName}
 
 import ${applicationPackage}.base.BaseActivity
+import ${applicationPackage}.R
 import org.jetbrains.anko.*
 /**
  * 创建者：
