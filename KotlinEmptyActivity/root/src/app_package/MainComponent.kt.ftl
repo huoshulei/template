@@ -8,7 +8,7 @@ import org.jetbrains.anko.*
  * 时间：  
  */
 class ${componentClass}(override val isShowToolbar: Boolean = true) : BaseComponent<${activityClass}>() {
-     override fun _LinearLayout.contentView(activity: AboutActivity) {
+     override fun _LinearLayout.contentView(activity: ${activityClass}) {
 	  
 	   
     }
