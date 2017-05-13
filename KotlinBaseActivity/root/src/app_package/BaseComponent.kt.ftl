@@ -60,7 +60,7 @@ abstract class BaseComponent<in T : AppCompatActivity> : AnkoComponent<T> {
         }
     }
 
-    abstract fun _LinearLayout.contentView(owner: T)
+    abstract fun _LinearLayout.contentView(activity: T)
 
 }
 
