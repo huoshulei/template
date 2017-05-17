@@ -1,4 +1,4 @@
-package ${packageName};
+package ${packageName}
 
 import ${applicationPackage}.base.BaseComponent
 import org.jetbrains.anko.*
