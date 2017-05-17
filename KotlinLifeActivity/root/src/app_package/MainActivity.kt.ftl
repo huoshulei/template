@@ -1,6 +1,7 @@
 package ${packageName};
 
 import ${applicationPackage}.base.LifeActivity
+import ${applicationPackage}.R
 import org.jetbrains.anko.*
 /**
  * 创建者：
