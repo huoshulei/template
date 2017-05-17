@@ -51,10 +51,10 @@ abstract class BaseAdapter<T>(private var isFooter: Boolean = false,
             textView("其他登录") {
                 id = 0x1205d
                 gravity = Gravity.CENTER
-                lines=1
+                lines = 1
                 textSize = 15f
                 textColor = 0xff666666.toInt()
-                backgroundColor=0xffe6e6e6.toInt()
+                backgroundColor = 0xffe6e6e6.toInt()
             }.lparams(matchParent, matchParent)
         }
     }
@@ -84,10 +84,10 @@ abstract class BaseAdapter<T>(private var isFooter: Boolean = false,
             textView {
                 id = 0x1205e
                 gravity = Gravity.CENTER
-                lines=1
+                lines = 1
                 textSize = 15f
                 textColor = 0xff666666.toInt()
-                backgroundColor=0xffe6e6e6.toInt()
+                backgroundColor = 0xffe6e6e6.toInt()
             }.lparams(matchParent, matchParent)
         }
     }
@@ -121,50 +121,60 @@ abstract class BaseAdapter<T>(private var isFooter: Boolean = false,
     /**
      * @param data 添加数据
      */
-    fun setData(data: List<T>) {
+    fun setData(data: List<T>?) {
         clear()
-        mData.addAll(data)
-        notifyItemRangeInserted(0, mData.size)
-    }
-
-    /**
-     * @param data 添加数据
-     */
-    fun addData(data: List<T>) {
-        if (data.isEmpty()) {
-            return
+        data?.let {
+            mData.addAll(it)
+            notifyItemRangeInserted(0, mData.size)
         }
-        val count = mData.size
-        mData.addAll(data)
-        notifyItemRangeInserted(count, data.size)
     }
 
     /**
      * @param data 添加数据
      */
-    fun addData(data: T) {
-        val count = mData.size
-        mData.add(data)
-        notifyItemInserted(count)
-    }
-
-    /**
-     * @param data 添加数据
-     */
-    fun addData(data: List<T>, position: Int) {
-        if (data.isEmpty()) {
-            return
+    fun addData(data: List<T>?) {
+        data?.let {
+            if (it.isEmpty()) {
+                return
+            }
+            val count = mData.size
+            mData.addAll(it)
+            notifyItemRangeInserted(count, it.size)
         }
-        mData.addAll(data)
-        notifyItemRangeInserted(position, data.size)
     }
 
     /**
      * @param data 添加数据
      */
-    fun addData(data: T, position: Int) {
-        mData.add(position, data)
-        notifyItemInserted(position)
+    fun addData(data: T?) {
+        data?.let {
+            val count = mData.size
+            mData.add(it)
+            notifyItemInserted(count)
+        }
+    }
+
+    /**
+     * @param data 添加数据
+     */
+    fun addData(data: List<T>?, position: Int) {
+        data?.let {
+            if (it.isEmpty()) {
+                return
+            }
+            mData.addAll(it)
+            notifyItemRangeInserted(position, it.size)
+        }
+    }
+
+    /**
+     * @param data 添加数据
+     */
+    fun addData(data: T?, position: Int) {
+        data?.let {
+            mData.add(position, it)
+            notifyItemInserted(position)
+        }
     }
 
     /**
@@ -186,9 +196,11 @@ abstract class BaseAdapter<T>(private var isFooter: Boolean = false,
     /**
      * @param data 删除指定数据
      */
-    fun remove(data: T) {
-        val index = mData.indexOf(data)
-        if (index >= 0) remove(index)
+    fun remove(data: T?) {
+        data?.let {
+            val index = mData.indexOf(it)
+            if (index >= 0) remove(index)
+        }
     }
 
     fun getData(): MutableList<T> {
