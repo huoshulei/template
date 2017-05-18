@@ -41,15 +41,13 @@ abstract class BaseAdapter<T>(private var isFooter: Boolean = false,
 
     abstract fun convert(holder: ViewHolder, item: T)
     abstract fun convertView(context: Context): View
-    open fun footer(holder: ViewHolder) {
-        holder.setText(0x1205d, "我们是有底线的")
+   open fun footer(holder: ViewHolder) {
     }
 
     open fun footerView(context: Context): View = with(context) {
         verticalLayout {
             lparams(matchParent, dip(50))
-            textView("其他登录") {
-                id = 0x1205d
+            textView("我们是有底线的") {
                 gravity = Gravity.CENTER
                 lines = 1
                 textSize = 15f
@@ -69,8 +67,7 @@ abstract class BaseAdapter<T>(private var isFooter: Boolean = false,
         }
     }
 
-    open fun more(holder: ViewHolder) {
-        holder.setText(0x1205e, "加载更多内容")
+     open fun more(holder: ViewHolder) {
         loadMore(holder)
     }
 
@@ -81,8 +78,7 @@ abstract class BaseAdapter<T>(private var isFooter: Boolean = false,
     open fun moreView(context: Context): View = with(context) {
         verticalLayout {
             lparams(matchParent, dip(50))
-            textView {
-                id = 0x1205e
+            textView("加载更多内容") {
                 gravity = Gravity.CENTER
                 lines = 1
                 textSize = 15f
