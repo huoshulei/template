@@ -1,3 +1,0 @@
-com.armandakopian.lifecyclesorter
-org.jetbrains.java.decompiler
-org.jetbrains.kotlin.android.dsl
