@@ -41,7 +41,7 @@ abstract class BaseFragment<out T : BaseFragmentComponent> : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (isFirstVisible) {
+        if (isFirstInit) {
             isFirstInit = false
             configView(rootView)
             handleEvent()
